@@ -2,27 +2,17 @@ public class Human {
     private int yearOfBirth;
     public String name;
     private String town;
-    public String job;
-    public Human(int yearOfBirth, String name, String town, String job) {
-        if(yearOfBirth < 0) {
-            this.yearOfBirth = 0;
-        } else {
-            this.yearOfBirth = yearOfBirth;
-        }
-        if(name == null) {
+    public String jobTitle;
+    public Human(int yearOfBirth, String name, String town, String jobTitle) {
+        setYearOfBirth(yearOfBirth);
+        this.name = name;
+        if(this.name == null) {
             this.name = "Информация не указана";
-        } else {
-            this.name = name;
         }
-        if(town == null || town.isEmpty()) {
-            this.town = "Информация не указана";
-        } else {
-            this.town = town;
-        }
-        if(job == null) {
-            this.job = "Информация не указана";
-        } else {
-            this.job = job;
+        setTown(town);
+        this.jobTitle = jobTitle;
+        if(this.jobTitle == null) {
+            this.jobTitle = "Информация не указана";
         }
     }
     public int getYearOfBirth() {
@@ -32,17 +22,22 @@ public class Human {
         return town;
     }
     public void setYearOfBirth(int yearOfBirth) {
+        this.yearOfBirth = yearOfBirth;
         if(yearOfBirth < 0) {
             this.yearOfBirth = 0;
-        } else {
-            this.yearOfBirth = yearOfBirth;
         }
     }
     public void setTown(String town) {
+        this.town = town;
         if(town == null || town.isEmpty()) {
             this.town = "Информация не указана";
-        } else {
-            this.town = town;
         }
+    }
+    @Override
+    public String toString() {
+        return "Привет! Меня зовут " + name + ". Я из города " + town + ". Я родился в " + yearOfBirth + " году. Я работаю на должности " + jobTitle + ". Будем знакомы!";
+    }
+    public void printInfo() {
+        System.out.println(this);
     }
 }
